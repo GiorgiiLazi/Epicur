@@ -36,6 +36,7 @@ export default {
   font-size: 25px;
   background:orangered;
   padding: 2px;
+  max-height: 50px;
 }
 .lang-toggle *{
   padding: 2px;

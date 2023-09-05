@@ -1,13 +1,21 @@
 <template>
-  <my-navbar class="navbar"></my-navbar>
-  <div class="carousel-box">
-    <my-carousel class="carousel" v-slot='{currentSlide}'>
-      <my-slides v-for="(slide, index) in carouselSlides" :key="index">
-        <div v-show="currentSlide === index + 1" class="slide-info">
-          <img class="img" :src="require(`../assets/${slide}.jpg`)" alt="">
-        </div>
-      </my-slides>
-    </my-carousel>
+  
+  <div class="box-message">
+    <transition appear name="photo">
+    <div class="img-box">
+      <img src="@/assets/ceo.png" alt="CEO">
+    </div>
+    </transition>
+    <transition name="info" appear>
+    <div class="message">
+      <h1>Talk to our Expert team</h1>
+      <h2>Lazishvili Giorgi</h2>
+      <h3>CEO</h3>
+      <h4>+555 555 555</h4>
+      <h5>malazi140@gmail.com</h5>
+    </div>
+    </transition>
+     
   </div>
   
 </template>
@@ -17,54 +25,73 @@
 
 export default {
   name: 'home',
-  setup(){
-    const carouselSlides = ['bg-1','bg-2','bg-3']
-    
-    return {carouselSlides}
-  }
+  
   
 }
 </script>
 
 <style scoped>
-.navbar{
-  z-index:5;
-  position: absolute;
-  width: 100%
-}
-.carousel-box{
-  position:absolute;
-  top:0;
-  left:0;
-  max-height: 100vh;
-  height:100vh;
-  z-index: 0;
-}
-.carousel{
-  position: relative;
-  max-height: 100vh;
-  height:100vh;
-}
-.slide-info{
-  position:absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  max-height: 100%;
-  height: 100%;
-}
-.slide-info img{
-  min-width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img{
-  max-width: 100vw;
-  max-height:100vh;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
+  .box-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 100vh;
+    height: 100vh;
+    width: 100vw;
+    background-color: white
+  }
+  .message{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    align-self:center;
+    background:#ae9e9e;
+    height: 200px;
+    width: 300px;
+    text-align: left;
+    padding: 20px;
+    color: white;
+    
+  }
+  .message h1{
+    color: black;
+    text-transform: uppercase;
+  }
+  .img-box{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    align-self:center;
+    width: 300px;
+    height: 400px;
+  }
+  .img-box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+  /* animation */
+  .info-enter-from{
+    opacity: 0;
+    transform: translateX(100px)
+  }
+  .info-enter-to{
+    opacity: 1;
+    transform: translateX(0)
+  }
+  .info-enter-active{
+    transition: all 3s ease
+  }
+  .photo-enter-from{
+    opacity: 0;
+    transform: translateY(100px)
+  }
+  .photo-enter-to{
+    opacity: 1;
+    transform: translateY(0)
+  }
+  .photo-enter-active{
+    transition: all 3s ease
+  }
+  
 
 </style>

@@ -1,4 +1,5 @@
 <template>
+    
   <div class='box'>
     <nav class='box-nav'>
         <div class="logo">
@@ -15,62 +16,54 @@
         </div>
         
     </nav>
-    <div class="dynamic-message-box">
-        <div>
-            <h1>
-                Epicurean Travel
-            </h1>
-            <h3>
-                <div v-if="selected === 'EN'">Your Guide To Pleasure</div>
-                <div v-else>Ваш гид по удовольствию</div>
-            </h3>
-        </div>
-        <!-- Navigation -->
-        <div class="toggle-page left">
-                <i class="fa-solid fa-chevron-left fa-beat" style="color: #ff0033;"></i>
-        </div>
-        <div class="toggle-page right">
-                <i class="fa-solid fa-chevron-right fa-beat" style="color: #ff0033;"></i>
-        </div>
-    </div>
     <nav class="nav-router-links">
         <ul v-if="selected === 'EN'">
             <li>
-                <router-link to="/">Home</router-link>
+                <router-link to="home">Home</router-link>
             </li>
             <li>
-                <router-link to="/">Our Tours</router-link>
+                <router-link to="tours">Our Tours</router-link>
             </li>
             <li>
-                <router-link to="/">About us</router-link>
+                <router-link to="about">About us</router-link>
             </li>
             <li>
-                <router-link to="/">Why us</router-link>
+                <router-link to="why">Why us</router-link>
             </li>
             <li>
-                <router-link to="/">Destinations</router-link>
+                <router-link to="destinations">Destinations</router-link>
             </li>
     
         </ul>
         <ul v-else>
             <li>
-                <router-link to="/">Главная</router-link>
+                <router-link to="home">Главная</router-link>
             </li>
             <li>
-                <router-link to="/">Туры</router-link>
+                <router-link to="tours">Туры</router-link>
             </li>
             <li>
-                <router-link to="/">О нас</router-link>
+                <router-link to="about">О нас</router-link>
             </li>
             <li>
-                <router-link to="/">Почему выбирают нас</router-link>
+                <router-link to="why">Преимущества</router-link>
             </li>
             <li>
-                <router-link to="/">Дестинации</router-link>
+                <router-link to="destinations">Дестинации</router-link>
             </li>
     
         </ul>
+        
     </nav>
+    <div class="dynamic-message-box">
+        <div>
+            <h1>
+                Epicurean Travel
+            </h1>
+            
+        </div>
+        
+    </div>
     
   
 </div>
@@ -87,13 +80,21 @@ export default {
             selected:'EN'
         }
     },
+    mounted(){
+        localStorage.getItem(this.selected)
+        console.log(this.selected)
+    },
     methods:{
         toggleLang(){
-            if(this.selected === 'EN'){
+            if(localStorage.getItem(this.selected) === 'EN'){
                 this.selected = 'RU'
+                localStorage.setItem(this.selected, 'RU')
+                console.log(this.selected)
             }
             else{
                 this.selected = 'EN'
+                localStorage.setItem(this.selected, 'EN')
+                console.log(this.selected)
             }
         }
     }
@@ -120,7 +121,7 @@ export default {
     height: 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
 }
 .logo img{
     height: 100%;
@@ -143,8 +144,7 @@ export default {
 .lang-toggle{
     display: flex;
     align-items: center;
-    justify-items: center;
-    z-index:7;
+    justify-items: flex-start;
     
 }
 .toggle-btn{
@@ -166,8 +166,10 @@ export default {
     margin: 5px 5px;
 }
 .dynamic-message-box{
-    margin-top: 50px;
     text-align: center;
+    position: relative;
+    top: 150px;
+    
 }
 .dynamic-message-box h1{
     text-shadow: 1.5px 1.5px 1.5px black;
@@ -182,9 +184,10 @@ export default {
     color:orangered;
 }
 .nav-router-links{
+    z-index: 10;
     display: flex;
-    justify-self: flex-start;
-    background-image: linear-gradient(to top, #c4d16b, #84cb80, #42bf9c, #00afb2, #009cbb, #0091bd, #0084be, #0077bb, #0071bd, #006abe, #0063be, #005cbe);
+    justify-self: center;
+    background-image: rgba(0,0,0,0.4);
     box-sizing: border-box;
     height: 120px;
     position: absolute;
@@ -213,44 +216,21 @@ export default {
     
 }
 .nav-router-links ul li a{
-    color: white;
+    color: orangered;
+    text-shadow: 2px 2px 2px black;
     font-size: 25px;
     text-decoration: none;
 }
 .nav-router-links ul li:hover{
     background: rgba(0, 0, 0, 0.4)
 }
-.link.active {
-  background-color: red;
-  color: white;
+.router-link-active {
+    padding:8px;
+    color: red;
+    background-color:orange;
+    border-radius: 12px;
 }
-.toggle-page{
-  display: flex;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-.right{
-    right: 30px;
-    align-self: center;
-}
-.left{
-    left: 30px;
-    align-self: center
-}
-i{
-    cursor:pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: orange;
-    border-radius: 8px;
-    z-index: 6;
-}
+
 
 
 </style>
