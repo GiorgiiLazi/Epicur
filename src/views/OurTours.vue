@@ -1,15 +1,22 @@
 <template>
+  
   <div class="tour-types">
-    <transition-group 
+    <transition-group
+    name="list" 
+    appear
     @before-enter="beforeEnter"
-    @enter="enter" name="list" 
-    appear 
+    @enter="enter"
     mode="out-in" 
     tag="ul" 
     class="list">
-      <li v-for="(tour, index) in tourTypes" :key="tour.id" :data-index="index">
-        <span class="material-icons">{{tour.name}}</span>
-        <div>{{tour.type}}</div>
+      <li v-for="(tour, index) in tours" :key="tour.id" :data-index="index">
+        
+          <h2 class="name">{{tour.name}}</h2>
+          <h4 class="type">Type: {{tour.type}}</h4>
+          <h4 class="cost">Cost in $: {{tour.cost}}</h4>
+          <h4 class="duration">Duration (in days): {{tour.duration}}</h4>
+          <p class="desc">Description: {{tour.desc}}</p>
+        
       </li>
     </transition-group>
   </div>
@@ -17,71 +24,86 @@
 </template>
 
 <script>
-import gsap from 'gsap'
+import gsap from "gsap"
 import { ref } from 'vue'
 export default {
   setup(){
-    const tourTypes = ref([
-      {name: 'directions_boat_filled', type: 'by sea', id: 1},
-      {name: 'train', type: 'by train', id: 1},
-      {name: 'drive_eta', type: 'by road', id: 1},
-      {name: 'flight_takeoff', type: 'by plain', id: 1},
-    ])
+    const tours = ref([])
+    const selected = ref('duration')
 
     const beforeEnter = (el) =>{
       el.style.opacity = 0;
       el.style.transform = "translateY(100px)"
-    } 
+    }
     const enter = (el, done) =>{
       gsap.to(el,{
-      opacity: 1,
-      y:0,
-      duration: 1,
-      onComplete: done,
-      delay: el.dataset.index * 0.2
-    })
-    } 
+        y:0,
+        opacity: 1,
+        duration: 1,
+        onComplete: done,
+        delay: el.dataset.index * 0.4
+      })
+    }
 
-    
-
-    return {tourTypes, beforeEnter, enter}
+    const sort = () =>{
+      if(selected.value === "cost"){
+        // const sortedTours = [...this.tours].cost.sort(a,b => a+b)
+        // this.tours = sortedTours
+      }
+      if(selected.value === "type"){
+        
+      }
+      if(selected.value === "duration"){
+        
+      }
+    }
+    return { tours, selected, beforeEnter, enter, sort}
+  },
+  mounted(){
+    fetch("http://localhost:3000/tours")
+      .then(res => res.json())
+      .then(data => this.tours = data)
+      .catch(err => console.log(err.message))
   }
+  
 }
 </script>
 
 <style scoped>
- .tour-types{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 100vh;
-  width: 100vw;
-  height: 100vh;
-}
-.list{
+ .list{
+  list-style: none;
+  position: absolute;
+  margin-top: 110vh;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;
-  max-width: 600px;
-} 
-.list li{
-  color:darkred;
-  text-shadow: 1px 2px 3px #999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  list-style-type: none;
-  background:rgb(208, 208, 208);
-  padding: 90px;
-  border-radius: 10px;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: repeat(4, 1fr);
+  gap: 15px;
+  
+ }
+ .list li{
+  font-family: Oswald;
   cursor: pointer;
-  line-height: 1.5em;
-  text-transform: lowercase;
-  font-size: 24px;
-}
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  background-color:orange;
+  max-width: 400px;
+  min-width: 200px;
+  min-height: 200px;
+  max-height: 400px;
+ }
+ .name{
+  color:orangered;
+  text-shadow: 1.5px 1px 1.5px black ;
+  text-transform:uppercase
+ }
+
 
 </style>

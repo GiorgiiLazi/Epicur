@@ -7,13 +7,7 @@
             <label for="logo">Epicurean <span>Travel</span></label>
         </div>
         <my-lang-toggle class="lang-toggle" @change="toggleLang"></my-lang-toggle>
-        <div class="toggle-btn">
-            <div>
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+        
         
     </nav>
     <nav class="nav-router-links">
@@ -24,15 +18,8 @@
             <li>
                 <router-link to="tours">Our Tours</router-link>
             </li>
-            <li>
-                <router-link to="about">About us</router-link>
-            </li>
-            <li>
-                <router-link to="why">Why us</router-link>
-            </li>
-            <li>
-                <router-link to="destinations">Destinations</router-link>
-            </li>
+            
+            
     
         </ul>
         <ul v-else>
@@ -42,28 +29,18 @@
             <li>
                 <router-link to="tours">Туры</router-link>
             </li>
-            <li>
-                <router-link to="about">О нас</router-link>
-            </li>
-            <li>
-                <router-link to="why">Преимущества</router-link>
-            </li>
-            <li>
-                <router-link to="destinations">Дестинации</router-link>
-            </li>
+            
+            
     
         </ul>
         
     </nav>
-    <div class="dynamic-message-box">
-        <div>
-            <h1>
-                Epicurean Travel
-            </h1>
-            
-        </div>
+    <transition name="title" class="dynamic-message-box" appear>
+        <h1>
+            Epicurean Travel 
+        </h1>
         
-    </div>
+    </transition>
     
   
 </div>
@@ -82,19 +59,18 @@ export default {
     },
     mounted(){
         localStorage.getItem(this.selected)
-        console.log(this.selected)
     },
     methods:{
         toggleLang(){
             if(localStorage.getItem(this.selected) === 'EN'){
                 this.selected = 'RU'
                 localStorage.setItem(this.selected, 'RU')
-                console.log(this.selected)
+                
             }
             else{
                 this.selected = 'EN'
                 localStorage.setItem(this.selected, 'EN')
-                console.log(this.selected)
+               
             }
         }
     }
@@ -108,6 +84,7 @@ export default {
     box-sizing: border-box;
     max-height: 100vh;
     height:100vh;
+    margin: auto;
 }
 .box nav{
     display: flex;
@@ -147,41 +124,15 @@ export default {
     justify-items: flex-start;
     
 }
-.toggle-btn{
-    display: flex;
-    align-items: center;
-    justify-items: flex-start;
-    cursor: pointer;
-}
-.toggle-btn div{
-    height: 50px;
-    width: 50px;
-}
-.bar{
-    display: block;
-    height: 8px;
-    width: 100%;
-    border-radius: 10px;
-    background: orangered;
-    margin: 5px 5px;
-}
 .dynamic-message-box{
     text-align: center;
     position: relative;
     top: 150px;
+    color: orangered;
+    text-transform: uppercase;
+    color:orangered;
+    text-shadow: 1.5px 1px 1.5px black;
     
-}
-.dynamic-message-box h1{
-    text-shadow: 1.5px 1.5px 1.5px black;
-    text-transform: uppercase;
-    color:orangered;
-    text-decoration: underline;
-    text-decoration-color: chartreuse;
-}
-.dynamic-message-box h3, .dynamic-message-box h2{
-    text-shadow: 1.5px 1.5px 1.5px black;
-    text-transform: uppercase;
-    color:orangered;
 }
 .nav-router-links{
     z-index: 10;
@@ -225,10 +176,29 @@ export default {
     background: rgba(0, 0, 0, 0.4)
 }
 .router-link-active {
-    padding:8px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    box-sizing: border-box;
+    padding:0 10px 0px 10px;
     color: red;
     background-color:orange;
     border-radius: 12px;
+    width: 100%;
+    height: 70%;
+}
+/* animations */
+.title-enter-from{
+    opacity: 0;
+    transform: translateX(500px);
+
+}
+.title-enter-to{
+    opacity: 1;
+    transform: translateX(0);
+}
+.title-enter-active{
+    transition: all 1s ease
 }
 
 

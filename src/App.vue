@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -77,7 +78,7 @@ export default {
   max-height:100vh;
   width: 100vw;
   height: 100vh;
-  margin: 0;
+  margin: auto;
   padding: 0;
 }
 

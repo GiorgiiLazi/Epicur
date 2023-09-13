@@ -57,7 +57,8 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  z-index:9
+  z-index:9;
+  margin: auto;
 }
 .navigation{
   display: flex;

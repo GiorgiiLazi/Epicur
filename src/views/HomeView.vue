@@ -32,6 +32,7 @@ export default {
 
 <style scoped>
   .box-message{
+    font-family: Anton, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,22 +40,24 @@ export default {
     top: 100vh;
     height: 100vh;
     width: 100vw;
-    background-color: white
+    background-color: white;
   }
   .message{
     margin-top: 50px;
     margin-bottom: 50px;
     align-self:center;
     background:#ae9e9e;
-    height: 200px;
-    width: 300px;
+    height: 250px;
+    width: 350px;
+    min-width: 300px;
     text-align: left;
     padding: 20px;
-    color: white;
-    
+    color:white;
+    text-shadow: 1.5px 1.5px 1px black;
   }
   .message h1{
     color: black;
+    text-shadow: none;
     text-transform: uppercase;
   }
   .img-box{
@@ -63,11 +66,15 @@ export default {
     align-self:center;
     width: 300px;
     height: 400px;
+    min-width: 300px;
+    min-height: 300px;
+    
   }
   .img-box img{
     width: 100%;
     height: 100%;
     border-radius: 4px;
+
   }
   /* animation */
   .info-enter-from{
