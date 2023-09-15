@@ -6,7 +6,7 @@
             "duration": 4,
             "cost": 1500,
             "id": 1,
-            "desc":"Experience more than 10 most beatiful cities along the Mediterranean coast"
+            "desc":"Experience more than 10 most beautiful cities along the Mediterranean coast"
 
         },
         {
@@ -31,7 +31,7 @@
             "duration": 1,
             "cost": 25,
             "id": 4,
-            "desc":"Berlin's nightlife and sipping black parisian coffee in one day has never been that easy. Pierce the air on the new bullettrain. "
+            "desc":"To experience Berlin's nightlife and to sip coffee in Paris in one day has never been easier. Pierce the air on the new bullettrain. "
         },
         {
             "name": "Manchester - Essex",
@@ -55,7 +55,7 @@
             "duration": 4,
             "cost": 55,
             "id": 7,
-            "desc":"The most densely beatiful place on the continent"
+            "desc":"The most densely beautiful place on the continent"
         },
         {
             "name": "Cordillera",
@@ -87,7 +87,7 @@
             "duration": 1,
             "cost": 70,
             "id": 11,
-            "desc":"The chance of erupticg during your tour is 0.000056%"
+            "desc":"The chance of erupting during your stay is 0.000056%"
         },
         {
             "name": "Gator country",

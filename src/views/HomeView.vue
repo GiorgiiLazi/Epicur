@@ -2,18 +2,18 @@
   
   <div class="box-message">
     <transition appear name="photo">
-    <div class="img-box">
-      <img src="@/assets/ceo.png" alt="CEO">
-    </div>
+      <div class="img-box">
+        <img src="@/assets/ceo.png" alt="CEO">
+      </div>
     </transition>
     <transition name="info" appear>
-    <div class="message">
-      <h1>Talk to our Expert team</h1>
-      <h2>Lazishvili Giorgi</h2>
-      <h3>CEO</h3>
-      <h4>+555 555 555</h4>
-      <h5>malazi140@gmail.com</h5>
-    </div>
+      <div class="message">
+        <h1>Talk to our Expert team</h1>
+        <h2>Lazishvili Giorgi</h2>
+        <h3>CEO</h3>
+        <h4>+555 555 555</h4>
+        <h5>malazi140@gmail.com</h5>
+      </div>
     </transition>
      
   </div>
@@ -98,6 +98,33 @@ export default {
   }
   .photo-enter-active{
     transition: all 3s ease
+  }
+  /* size dynamic page*/
+  @media only screen and (max-width: 500px){
+    .box-message{
+      box-sizing: border-box;
+    }
+    .message{
+    padding: 30px;
+    width: 150px;
+    margin-top: 0;
+    min-width: 100px;
+    font-size: 12px;
+    font-family: Arial;
+    }
+    .message *{
+      font-size: 6px;
+    }
+    .message h1{
+      font-size: 16px;
+    }
+    .img-box{
+      margin: 0;
+    }
+    .img-box img{
+      width: 100%;
+      height: 100%;
+    }
   }
   
 

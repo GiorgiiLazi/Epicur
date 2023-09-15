@@ -42,6 +42,13 @@ export default {
   padding: 2px;
   border-radius: 8px;
 }
+@media only screen and (max-width: 500px){
+  .lang-toggle{
+    font-size: 15px;
+    z-index: 11;
+
+  }
+}
 
 
 </style>
