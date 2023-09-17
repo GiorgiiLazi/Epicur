@@ -60,7 +60,7 @@ export default {
     return { tours, selected, beforeEnter, enter, sort}
   },
   mounted(){
-    fetch("http://localhost:3000/tours")
+    fetch("https://dapper-quokka-ffb785.netlify.app/tours")
       .then(res => res.json())
       .then(data => this.tours = data)
       .catch(err => console.log(err.message))
