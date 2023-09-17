@@ -60,7 +60,7 @@ export default {
     return { tours, selected, beforeEnter, enter, sort}
   },
   mounted(){
-    fetch("https://dapper-quokka-ffb785.netlify.app/tours")
+    fetch("epicur.netlify.app/tours")
       .then(res => res.json())
       .then(data => this.tours = data)
       .catch(err => console.log(err.message))
