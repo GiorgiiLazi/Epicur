@@ -60,7 +60,7 @@ export default {
     return { tours, selected, beforeEnter, enter, sort}
   },
   mounted(){
-    fetch("epicur.netlify.app/tours")
+    fetch("http://localhost:3000/tours")
       .then(res => res.json())
       .then(data => this.tours = data)
       .catch(err => console.log(err.message))
